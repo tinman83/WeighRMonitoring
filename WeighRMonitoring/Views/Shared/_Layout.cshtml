@@ -3,42 +3,135 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - WeighR Monitoring</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/introjs.css" rel="stylesheet" />
+    <link href="~/Content/jplist-custom.css" rel="stylesheet" />
+    <link href="~/Content/jquery.news-ticker.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/nestable.css" rel="stylesheet" />
+    <link href="~/Content/pace.css" rel="stylesheet" />
+    <link href="~/Content/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/zabuto_calendar.min.css" rel="stylesheet" />
+    
+   
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    @using Microsoft.AspNet.Identity
+    @using WeighRMonitoring.Extensions
+    @if (Request.IsAuthenticated)
+    {
+        <input type="hidden" id="ClientId" value="@User.Identity.GetClientId()" />
+    }
+    <div>
+        <!--BEGIN BACK TO TOP-->
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+        <!--END BACK TO TOP-->
+        <!--BEGIN TOPBAR-->
+        <div id="header-topbar-option-demo" class="page-header-topbar">
+
+            <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">Cloresol</span><span style="display: none" class="logo-text-icon">µ</span></a>
+                </div>
+                <div class="topbar-main">
+                    <a id="menu-toggle" href="#" class="hidden-xs"><i class="glyphicon glyphicon-bars"></i></a>
+                   
+                    
+                </div>
+            </nav>
+            <!--BEGIN MODAL CONFIG PORTLET-->
+            <!--END MODAL CONFIG PORTLET-->
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <!--END TOPBAR-->
+        <div id="wrapper">
+            <!--BEGIN SIDEBAR MENU-->
+            <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+                 data-position="right" class="navbar-default navbar-static-side">
+                <div class="sidebar-collapse menu-scroll">
+                    <ul id="side-menu" class="nav">
+
+                        <div class="clearfix"></div>
+                        <li>
+                            <a href="/Home">
+                                <div class="glyphicon glyphicon-home"></div>
+                                </i><span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Dashboard">
+                                <div class="glyphicon glyphicon-dashboard"></div>
+                                </i><span class="menu-title">Monitoring</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Reports/Index">
+                                <div class="glyphicon glyphicon-list-alt"></div>
+                                </i><span class="menu-title">Reports</span>
+                            </a>
+                        </li>
+                           <li class="active">
+                                <a href="dashboard.html">
+                                    <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Zone 1</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="dashboard.html">
+                                    <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Zone 2</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="dashboard.html">
+                                    <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Zone 3</span>
+                                </a>
+                            </li>
+                       
+
+
+
+                    </ul>
+                </div>
+            </nav>
+            <!--END SIDEBAR MENU-->
+            <!--BEGIN PAGE WRAPPER-->
+            <div id="page-wrapper">
+               
+                @RenderBody()
+
+                <!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">
+                        <a href="http://cloresol.com">@DateTime.Now.Year © Cloresol - Remote Monitoring Simplified</a>
+                    </div>
+                </div>
+                <!--END FOOTER-->
+            </div>
+            <!--END PAGE WRAPPER-->
+
+
+        </div>
+
     </div>
 
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+            type="text/javascript"></script>*@
 </body>
 </html>

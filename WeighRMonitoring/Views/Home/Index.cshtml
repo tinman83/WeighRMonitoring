@@ -1,31 +1,103 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var navTitle = "Home";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+    <select id="machinesPara" class="col-sm-6 col-md-3 form-control para-select" data-style="btn-default">
+        <option value="">Select Machine</option>
+    </select>
+    <select id="productsPara" class="col-sm-6 col-md-3 form-control para-select" data-style="btn-default">
+        <option value="">Select Product</option>
+    </select>
+    <select id="durationPara" class="col-sm-6 col-md-3 form-control para-select" data-style="btn-default">
+        <option value="0">Today</option>
+        <option value="1">Previous Day</option>
+        <option value="2">Last 7 Days</option>
+        <option value="3">Last 30 Days</option>
+        <option value="4">Last 6 Months</option>
+    </select>
+    <div class="clearfix">
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!--BEGIN CONTENT-->
+<div class="page-content">
+    <div id="tab-general">
+        <div id="sum_box" class="row mbl">
+
+            <div class="col-sm-6 col-md-6">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="KpiBox">
+                            <div class="KpiBox-Header">Units</div>
+                            <div class="KpiBox-Content"><label id="numberOfUnits">10</label></div>
+                            <div class="KpiBox-footer KpiBox-color-blue">Target Weight: <label id="tagetWeight">20</label> Kgs</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="KpiBox">
+                            <div class="KpiBox-Header">Weight</div>
+                            <div id="totalWeight" class="KpiBox-Content">200</div>
+                            <div class="KpiBox-footer KpiBox-color-blue"><label id="averageTargetWeightDiviation">1.5</label> % Deviation</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="KpiBox">
+                            <div class="KpiBox-Header">Avg</div>
+                            <div id="averageWeight" class="KpiBox-Content">19.5</div>
+                            <div class="KpiBox-footer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
+                        <div class="KpiBox kpiDensityBox">
+                            <div class="KpiBox-Header">Density Trend</div>
+                            <div id="density_chart" style="width:100%; height: 100px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
+                        <div class="KpiBox kpiDensityBox">
+                            <div class="KpiBox-Header">Locations</div>
+                            <div id="locations_map" style="width:100%; height:275px;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="KpiBox kpiDensityBox">
+                    <div class="KpiBox-Header">Overall Equipment Effectiveness</div>
+                    <div id="equipmentEffectiveness_div" style="width:100%; height: 120px;align-content:center;"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="KpiBox kpiDensityBox">
+                    <div class="KpiBox-Header">KPIs</div>
+                    <div id="kpis" style="width:100%;height: 100px;"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<!--END CONTENT-->
+<script type="text/javascript">
+    
+</script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="~/Scripts/Dashboard.js"></script>

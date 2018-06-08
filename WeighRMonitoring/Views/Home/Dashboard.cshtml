@@ -1,0 +1,81 @@
+﻿@using WeighRMonitoring.ViewModels;
+@model DashBoardViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Transaction Monitoring";
+    var navTitle = Model.NavTitle;
+    var signalRHubConnection = Model.signalRHubConnection;
+}
+
+
+
+@{
+    ViewBag.Title = "Reports";
+}
+<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+    <select id="machinesPara" class="col-sm-6 col-md-3 form-control para-select" data-style="btn-default">
+        <option value="">Select Machine</option>
+    </select>
+    <select id="productsPara" class="col-sm-6 col-md-3 form-control para-select" data-style="btn-default">
+        <option value="">Select Product</option>
+    </select>
+    <select id="durationPara" class="col-sm-6 col-md-3 form-control para-select" data-style="btn-default">
+        <option value="0">Today</option>
+        <option value="1">Previous Day</option>
+        <option value="2">Last 7 Days</option>
+        <option value="3">Last 30 Days</option>
+        <option value="4">Last 6 Months</option>
+    </select>
+    <div class="clearfix">
+    </div>
+</div>
+
+<!--BEGIN CONTENT-->
+<div class="page-content">
+    <div id="tab-general">
+        <div id="sum_box" class="row mbl">
+            <div id="transactionData">
+                <table class="table table-striped" border="0">
+                    <tbody>
+                        <tr>
+                            <th>BatchNumber</th>
+                            <th>ProductCode</th>
+                            <th>ProductName</th>
+                            <th>Target Weight (Kgs)</th>
+                            <th>Total Units</th>
+                            <th>Total Weight (Kgs)</th>
+                            <th>Target Weight Dev %</th>
+                            <th>Avg Weight (Kgs)</th>
+                            <th>Density</th>
+                        </tr>
+
+                        <!-- ko foreach: summaries -->
+                        <tr data-bind="css: { numberOfUnits: TotalUnits() > 0 }">
+                            <td data-bind="text: BatchNumber"></td>
+                            <td data-bind="text: ProductCode"></td>
+                            <td data-bind="text: ProductName"></td>
+                            <td data-bind="text: TargetWeight"></td>
+                            <td data-bind="text: TotalUnits"></td>
+                            <td data-bind="text: TotalWeight"></td>
+                            <td data-bind="text: TargetWeightDeviation"></td>
+                            <td data-bind="text: AverageWeight"></td>
+                            <td data-bind="text: Density"></td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!--END CONTENT-->
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+
+

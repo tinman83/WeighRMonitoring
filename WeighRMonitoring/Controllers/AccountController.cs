@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WeighRMonitoring.Models;
+using System.Collections.Generic;
+using WeighRMonitoring.Models.Components;
 
 namespace WeighRMonitoring.Controllers
 {
@@ -139,7 +141,20 @@ namespace WeighRMonitoring.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+
+            ClientComponent clientComp = new ClientComponent();
+            var clients = clientComp.GetClients();
+
+            var model = new RegisterViewModel();
+
+            model.Clients = clients
+                                 .Select(s => new SelectListItem
+                                 {
+                                     Value = s.ClientId.ToString(),
+                                     Text = s.CompanyName
+                                 }).ToList();
+
+            return View(model);
         }
 
         //
@@ -151,7 +166,7 @@ namespace WeighRMonitoring.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,ClientId=model.ClientId };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -169,6 +184,16 @@ namespace WeighRMonitoring.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            ClientComponent clientComp = new ClientComponent();
+            var clients = clientComp.GetClients();
+
+            model.Clients = clients
+                                 .Select(s => new SelectListItem
+                                 {
+                                     Value = s.ClientId.ToString(),
+                                     Text = s.CompanyName
+                                 }).ToList();
+
             return View(model);
         }
 
