@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BatchesPerProductSummaryReportDataSet" targetNamespace="http://tempuri.org/BatchesPerProductSummaryReportDataSet.xsd" xmlns:mstns="http://tempuri.org/BatchesPerProductSummaryReportDataSet.xsd" xmlns="http://tempuri.org/BatchesPerProductSummaryReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DefaultConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DefaultConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DefaultConnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rptBatchesPerProductSummaryTableAdapter" GeneratorDataComponentClassName="rptBatchesPerProductSummaryTableAdapter" Name="rptBatchesPerProductSummary" UserDataComponentName="rptBatchesPerProductSummaryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="WeighR.dbo.rptBatchesPerProductSummary" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BatchCode, ProductCode, ProductName, ProductWeight, Units, TotalTargetWeight, TotalActualWeight, AvgDensity, Diff FROM dbo.rptBatchesPerProductSummary</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="BatchCode" DataSetColumn="BatchCode" />
+              <Mapping SourceColumn="ProductCode" DataSetColumn="ProductCode" />
+              <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
+              <Mapping SourceColumn="ProductWeight" DataSetColumn="ProductWeight" />
+              <Mapping SourceColumn="Units" DataSetColumn="Units" />
+              <Mapping SourceColumn="TotalTargetWeight" DataSetColumn="TotalTargetWeight" />
+              <Mapping SourceColumn="TotalActualWeight" DataSetColumn="TotalActualWeight" />
+              <Mapping SourceColumn="AvgDensity" DataSetColumn="AvgDensity" />
+              <Mapping SourceColumn="Diff" DataSetColumn="Diff" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BatchesPerProductSummaryReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BatchesPerProductSummaryReportDataSet" msprop:Generator_UserDSName="BatchesPerProductSummaryReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rptBatchesPerProductSummary" msprop:Generator_TableClassName="rptBatchesPerProductSummaryDataTable" msprop:Generator_TableVarName="tablerptBatchesPerProductSummary" msprop:Generator_TablePropName="rptBatchesPerProductSummary" msprop:Generator_RowDeletingName="rptBatchesPerProductSummaryRowDeleting" msprop:Generator_RowChangingName="rptBatchesPerProductSummaryRowChanging" msprop:Generator_RowEvHandlerName="rptBatchesPerProductSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="rptBatchesPerProductSummaryRowDeleted" msprop:Generator_UserTableName="rptBatchesPerProductSummary" msprop:Generator_RowChangedName="rptBatchesPerProductSummaryRowChanged" msprop:Generator_RowEvArgName="rptBatchesPerProductSummaryRowChangeEvent" msprop:Generator_RowClassName="rptBatchesPerProductSummaryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BatchCode" msprop:Generator_ColumnVarNameInTable="columnBatchCode" msprop:Generator_ColumnPropNameInRow="BatchCode" msprop:Generator_ColumnPropNameInTable="BatchCodeColumn" msprop:Generator_UserColumnName="BatchCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductWeight" msprop:Generator_ColumnVarNameInTable="columnProductWeight" msprop:Generator_ColumnPropNameInRow="ProductWeight" msprop:Generator_ColumnPropNameInTable="ProductWeightColumn" msprop:Generator_UserColumnName="ProductWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Units" msprop:Generator_ColumnVarNameInTable="columnUnits" msprop:Generator_ColumnPropNameInRow="Units" msprop:Generator_ColumnPropNameInTable="UnitsColumn" msprop:Generator_UserColumnName="Units" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalTargetWeight" msprop:Generator_ColumnVarNameInTable="columnTotalTargetWeight" msprop:Generator_ColumnPropNameInRow="TotalTargetWeight" msprop:Generator_ColumnPropNameInTable="TotalTargetWeightColumn" msprop:Generator_UserColumnName="TotalTargetWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalActualWeight" msprop:Generator_ColumnVarNameInTable="columnTotalActualWeight" msprop:Generator_ColumnPropNameInRow="TotalActualWeight" msprop:Generator_ColumnPropNameInTable="TotalActualWeightColumn" msprop:Generator_UserColumnName="TotalActualWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgDensity" msprop:Generator_ColumnVarNameInTable="columnAvgDensity" msprop:Generator_ColumnPropNameInRow="AvgDensity" msprop:Generator_ColumnPropNameInTable="AvgDensityColumn" msprop:Generator_UserColumnName="AvgDensity" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Diff" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDiff" msprop:Generator_ColumnPropNameInRow="Diff" msprop:Generator_ColumnPropNameInTable="DiffColumn" msprop:Generator_UserColumnName="Diff" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

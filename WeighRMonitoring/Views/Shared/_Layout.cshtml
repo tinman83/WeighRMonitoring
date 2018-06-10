@@ -11,6 +11,7 @@
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/Content/animate.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/introjs.css" rel="stylesheet" />
@@ -21,7 +22,6 @@
     <link href="~/Content/pace.css" rel="stylesheet" />
     <link href="~/Content/style-responsive.css" rel="stylesheet" />
     <link href="~/Content/zabuto_calendar.min.css" rel="stylesheet" />
-    
    
 </head>
 <body>
@@ -41,12 +41,10 @@
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">
                     <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">Cloresol</span><span style="display: none" class="logo-text-icon">µ</span></a>
+                    <a id="logo" href="/Home" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">WeighR</span><span style="display: none" class="logo-text-icon">µ</span></a>
                 </div>
                 <div class="topbar-main">
                     <a id="menu-toggle" href="#" class="hidden-xs"><i class="glyphicon glyphicon-bars"></i></a>
-                   
-                    
                 </div>
             </nav>
             <!--BEGIN MODAL CONFIG PORTLET-->
@@ -74,36 +72,25 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Reports/Index">
+                            <a href="/Reports/Index/1">
                                 <div class="glyphicon glyphicon-list-alt"></div>
-                                </i><span class="menu-title">Reports</span>
+                                </i><span class="menu-title">Production Reports</span>
                             </a>
                         </li>
-                           <li class="active">
-                                <a href="dashboard.html">
-                                    <div class="icon-bg bg-orange"></div>
-                                    </i><span class="menu-title">Zone 1</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="dashboard.html">
-                                    <div class="icon-bg bg-orange"></div>
-                                    </i><span class="menu-title">Zone 2</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="dashboard.html">
-                                    <div class="icon-bg bg-orange"></div>
-                                    </i><span class="menu-title">Zone 3</span>
-                                </a>
-                            </li>
-                       
-
-
-
+                        <li>
+                            <a href="/Reports/Index/2">
+                                <div class="glyphicon glyphicon-list-alt"></div>
+                                </i><span class="menu-title">Matchine Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Reports/Index/3">
+                                <div class="glyphicon glyphicon-list-alt"></div>
+                                </i><span class="menu-title">Batch Reports</span>
+                            </a>
+                        </li>
                     </ul>
+                    @Html.Partial("_LoginPartial")
                 </div>
             </nav>
             <!--END SIDEBAR MENU-->
@@ -113,11 +100,11 @@
                 @RenderBody()
 
                 <!--BEGIN FOOTER-->
-                <div id="footer">
+                @*<div id="footer">
                     <div class="copyright">
                         <a href="http://cloresol.com">@DateTime.Now.Year © Cloresol - Remote Monitoring Simplified</a>
                     </div>
-                </div>
+                </div>*@
                 <!--END FOOTER-->
             </div>
             <!--END PAGE WRAPPER-->
@@ -135,3 +122,4 @@
             type="text/javascript"></script>*@
 </body>
 </html>
+

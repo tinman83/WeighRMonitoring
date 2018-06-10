@@ -1,35 +1,17 @@
-﻿@model IEnumerable<WeighRMonitoring.Models.ReportCategory>
+﻿@model WeighRMonitoring.ViewModels.ReportsViewModel
 @using System.Web.UI.WebControls
 @using WeighRMonitoring.Models;
 @{
     ViewBag.Title = "Reports";
 }
 <link href="~/Content/jsTree/themes/default/style.min.css" rel="stylesheet" />
+
+<input type="hidden" id="ParentId" value="@Model.ParentId" />
+<input type="hidden" id="ReportName" value="@Model.ReportName" />
+
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
         <select id="reportsPara" class="col-sm-6 col-md-2 form-control para-select">
             <option value="">Select Report</option>
-            <option value="">Production - General Report</option>
-            <option value="">Production - Detailed Report</option>
-            <option value="">Production - Product Per Machine Summary Report</option>
-            <option value="">Production - Product Per Machine Detailed Report</option>
-            <option value="">Production - Daily Detailed Report</option>
-            <option value="">Production - Daily Summary Report</option>
-            <option value="">Production - Weekly Detailed Report</option>
-            <option value="">Production - Weekly Summary Report</option>
-            <option value="">Production - Monthly Detailed Report</option>
-            <option value="">Production - Monthly Summary Report</option>
-
-            <option value="">Machine - Detailed Report</option>
-            <option value="">Machine - Machine Per Product Detailed Report</option>
-            <option value="">Machine - Machine Per Product Summary Report</option>
-            <option value="">Machine - Fill-Time Per Machine Summary Report</option>
-            <option value="">Machine - Precision Per Machine Summary Report</option>
-
-            <option value="">Batch - Products Per Batch Detailed Report</option>
-            <option value="">Batch - Products Per Batch Summary Report</option>
-            <option value="">Batch - Batches Per Product Detailed Report</option>
-            <option value="">Batch - Batches Per Product Summary Report</option>
-
         </select>
         <select id="machinesPara" class="col-sm-6 col-md-2 form-control para-select">
             <option value="">Select Machine</option>
@@ -49,12 +31,12 @@
     <div id="tab-general">
         <div id="sum_box" class="row mbl">
 
-            <div class="col-md-8 weigh-page-container">
-                <iframe id="iframeReportViewer" style="height:560px;width:99%" frameborder="0" scrolling="no"></iframe>
+            <div class="col-md-12 weigh-page-container">
+                <iframe id="iframeReportViewer" style="min-height:2000px;width:99%" frameborder="0" scrolling="no"></iframe>
                 @section scripts{
-                    <script>
+                <script>
 
-                url = "../Reports/ReportViewerPanel.aspx";
+                url = "/../Reports/ReportViewerPanel.aspx";
                 var rframe = document.getElementById("iframeReportViewer");
                 if (rframe !== null) {
                     if (rframe.src) {
@@ -75,8 +57,60 @@
 
 </div>
 <!--END CONTENT-->
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/Reports.js"></script>
+<script>
+    $(function () {
+        //$("#dtpDateFrom").datepicker({ dateFormat: 'dd-mm-yy' });
+        //$("#dtpDateTo").datepicker({ dateFormat: 'dd-mm-yy' });
 
+        $("#dtpDateFrom").datepicker();
+        $("#dtpDateTo").datepicker();
+
+        $('#btnView').on('click', function () {
+
+            var reportName = ($('#reportsPara').val() === "") ? '' : $('#reportsPara').val();
+            var parentId = ($('#ParentId').val() === "") ? '' : $('#ParentId').val();
+            var clientId = ($('#ClientId').val() === "") ? 'test@techcentre.cloresol.com' : $('#ClientId').val();
+            var plant = "All";
+            var machine = ($('#machinesPara').val() === "") ? 'All' : $('#machinesPara').val();
+            var productCode = ($('#productsPara').val() === "") ? 'All' : $('#productsPara').val();
+            var dateFrom = ($('#dtpDateFrom').val() === "") ? Date.now() : $('#dtpDateFrom').val();;
+            var dateTo = ($('#dtpDateTo').val() === "") ? dateFrom : $('#dtpDateTo').val();;
+
+            var para = new ReportParameters(reportName, parentId, clientId, plant, machine, productCode, dateFrom, dateTo);
+            var jsonPara = JSON.stringify(para);
+
+            var url = "/../Reports/ReportViewerPanel.aspx?para=" + jsonPara;
+
+            var rframe = document.getElementById("iframeReportViewer");
+            if (rframe !== null) {
+                if (rframe.src) {
+                    rframe.src = url;
+                } else if (rframe.contentWindow !== null && rframe.contentWindow.location !== null) {
+                    rframe.contentWindow.location = url;
+                } else { rframe.setAttribute('src', url); }
+            }
+           
+        });
+    })
+
+
+    function ReportParameters(reportName, parentId, clientId, plant, fillingMachine, productCode, dateFrom, dateTo) {
+
+        this.ReportName = reportName
+        this.ClientId = clientId;
+        this.Plant = plant;
+        this.FillingMachine = fillingMachine;
+        this.ProductCode = productCode;
+        this.DateFrom = dateFrom;
+        this.DateTo = dateTo;
+        this.ParentId = parentId
+
+    }
+
+</script>
    
 
 

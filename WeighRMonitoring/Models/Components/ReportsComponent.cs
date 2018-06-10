@@ -33,10 +33,10 @@ namespace WeighRMonitoring.Models.Components
                   .Where(p => p.ReportName == reportName).FirstOrDefault();
 
         }
-        public List<Report> GetReports()
+        public List<Report> GetReports(int id)
         {
 
-            return _db.Reports.ToList();
+            return _db.Reports.Where(r=>r.ParentId==id).ToList();
         }
 
         public void GenerateReports()

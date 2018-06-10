@@ -44,5 +44,6 @@ namespace WeighRMonitoring.Models.Entities
         public string SerialNumber { get; set; }
         public Nullable<decimal> LowerLimit { get; set; }
         public Nullable<decimal> UpperLimit { get; set; }
+        public string ProductName { get; set; }
     }
 }

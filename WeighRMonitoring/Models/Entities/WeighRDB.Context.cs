@@ -12,7 +12,8 @@ namespace WeighRMonitoring.Models.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
+    [DbConfigurationType(typeof(WeighRDataContextConfiguration))]
     public partial class WeighREntities : DbContext
     {
         public WeighREntities()

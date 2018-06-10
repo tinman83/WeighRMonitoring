@@ -13,30 +13,26 @@ namespace WeighRMonitoring.Controllers
     public class ReportsController : Controller
     {
         // GET: Reports
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            ReportsComponent reportsComp = new ReportsComponent();
-            var reports = reportsComp.GetReports();
-
-            List<ReportCategory> reportsList = new List<ReportCategory>();
-
-            foreach (var item in reports)
+            ReportsViewModel reportsViewModel = new ReportsViewModel()
             {
-                reportsList.Add(new ReportCategory { ID = item.ID, Name = item.ReportName, ParentId = item.ParentId, Description = item.ReportDescription, Url = item.ReportURL });
-            }
-
-            List<ReportCategory> reportslist = new List<ReportCategory>
-            {
-                  new ReportCategory  { ID =1 , Name="Main Cat1"     , ParentId = null , Description  = "Main Cat1" ,    Url=""   },
-                  new ReportCategory  { ID =2 , Name="Sub Main Cat1" , ParentId = 1    , Description  ="Sub Main Cat1",  Url="" },
-                  new ReportCategory  { ID =3 , Name="Sub Sub"       , ParentId = 2    , Description  ="Sub Sub",        Url=""       },
-                  new ReportCategory  { ID =4 , Name="Main Cat2"     , ParentId = null , Description  ="Main Cat2"     ,Url=""},
-                  new ReportCategory  { ID =5 , Name="Main Cat3"     , ParentId = null , Description  ="Main Cat3"     ,Url=""},
-                  new ReportCategory  { ID =6 , Name="Sub Main Cat3" , ParentId = 5 , Description  ="Sub Main Cat3" ,Url=""}
+                ParentId = id,
             };
 
-            return View(reportslist.Where(x => !x.ParentId.HasValue).ToList());
+            //return View(reportsList.Where(x => !x.ParentId.HasValue).ToList());
+            return View(reportsViewModel);
         }
+
+        public ActionResult GetReport()
+        {
+            ReportsViewModel reportsViewModel = new ReportsViewModel()
+            {
+            };
+
+            return View(reportsViewModel);
+        }
+
         public ActionResult Products()
         {
             ReportsViewModel reportsViewModel = new ReportsViewModel()

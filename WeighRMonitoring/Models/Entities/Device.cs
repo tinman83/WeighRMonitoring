@@ -28,5 +28,6 @@ namespace WeighRMonitoring.Models.Entities
         public string iotHubDeviceKey { get; set; }
         public Nullable<bool> pushToWebApi { get; set; }
         public string ServerUrl { get; set; }
+        public string Coordinates { get; set; }
     }
 }

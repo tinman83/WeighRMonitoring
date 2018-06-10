@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WeighRMonitoring.Models;
 using WeighRMonitoring.Models.Components;
 using WeighRMonitoring.Models.Entities;
 
@@ -16,34 +18,31 @@ namespace WeighRMonitoring.Reports
         {
             if (!IsPostBack)
             {
-                string reportName = Request.QueryString["reportName"];
-                if (reportName != null)
+                string parameters = Request.QueryString["para"];
+
+                if (parameters != null)
                 {
-                    reportName = reportName.Trim();
+                    parameters = parameters.Trim();
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    ReportParameters reportParameters = js.Deserialize<ReportParameters>(parameters);
+                    RenderReport(reportParameters);
+
+                }else
+                {
+                    ReportParameters reportParameters = new ReportParameters();
+                    reportParameters.ReportName = "ProductsList";
+                    RenderReport(reportParameters);
                 }
-                RenderReport(reportName);
+
             }
         }
 
-        private void RenderReport(string reportName)
+        private void RenderReport(ReportParameters para)
         {
            
             ReportViewer1.Reset();
 
-            //if (reportName == "ProductsList")
-            //{
-            //    renderProductsListReport();
-            //}
-            //else if (reportName == "PlantsList")
-            //{
-            //    renderPlantsListReport();
-            //}
-            //else if (reportName == "ManchinesList")
-            //{
-            //    renderMachinesListReport();
-            //}
-
-            switch (reportName)
+            switch (para.ReportName)
             {
                 case "ProductsList":
                     renderProductsListReport();
@@ -53,6 +52,27 @@ namespace WeighRMonitoring.Reports
                     break;
                 case "ManchinesList":
                     renderMachinesListReport();
+                    break;
+                case "ProductPerMachineDetailedReport":
+                    renderProductsPerMachineDetailedReport(para);
+                    break;
+                case "ProductPerMachineSummaryReport":
+                    renderProductsPerMachineSummaryReport(para);
+                    break;
+                case "ProductionDetailedReport":
+                    renderProductionDetailedReport(para);
+                    break;
+                case "ProductionSummaryReport":
+                    renderProductionSummaryReport(para);
+                    break;
+                case "ProductionRunTimeReport":
+                    renderProductionRunTimeReport(para);
+                    break;
+                case "MachinePerformanceReport":
+                    renderMachinePerformanceReport(para);
+                    break;
+                case "BatchesPerProductSummaryReport":
+                    renderBatchesPerProductSummaryReport(para);
                     break;
                 case "Default":
                     break;

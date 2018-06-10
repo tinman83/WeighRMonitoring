@@ -1,21 +1,27 @@
 ﻿<style>
     a {
-        color: #8a929a !important;
+        color: #FFFFFF !important;
     }
 </style>
 
 @using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <div class="glyphicon glyphicon-user"></div>
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    <ul class="nav">
+        <li>
+           <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            <div class="glyphicon glyphicon-log-out"></div>
+        </li>
     </ul>
     }
 }

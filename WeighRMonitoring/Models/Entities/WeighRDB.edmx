@@ -52,6 +52,7 @@
           <Property Name="iotHubDeviceKey" Type="nvarchar" MaxLength="300" />
           <Property Name="pushToWebApi" Type="bit" />
           <Property Name="ServerUrl" Type="nvarchar(max)" />
+          <Property Name="Coordinates" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Lines">
           <Key>
@@ -155,7 +156,20 @@
           <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="LowerLimit" Type="decimal" Precision="18" Scale="4" />
           <Property Name="UpperLimit" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="300" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'WeighR.dbo.rptProductPerMachineSummary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="rptProductPerMachineSummary">
+          <Property Name="MachineName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="300" />
+          <Property Name="ProductWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Units" Type="int" />
+          <Property Name="TotalTargetWeight" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="TotalActualWeight" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="Diff" Type="decimal" Precision="38" Scale="2" />
+        </EntityType>-->
         <EntityContainer Name="WeighRModelStoreContainer">
           <EntitySet Name="Batches" EntityType="Self.Batches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
@@ -252,6 +266,7 @@
           <Property Name="iotHubDeviceKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="pushToWebApi" Type="Boolean" />
           <Property Name="ServerUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Coordinates" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -322,6 +337,7 @@
           <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LowerLimit" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="UpperLimit" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ProductName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -398,6 +414,7 @@
           <EntitySetMapping Name="Devices">
             <EntityTypeMapping TypeName="WeighRModel.Device">
               <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="Coordinates" ColumnName="Coordinates" />
                 <ScalarProperty Name="ServerUrl" ColumnName="ServerUrl" />
                 <ScalarProperty Name="pushToWebApi" ColumnName="pushToWebApi" />
                 <ScalarProperty Name="iotHubDeviceKey" ColumnName="iotHubDeviceKey" />
@@ -455,6 +472,7 @@
           <EntitySetMapping Name="TransactionLogs">
             <EntityTypeMapping TypeName="WeighRModel.TransactionLog">
               <MappingFragment StoreEntitySet="TransactionLogs">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="UpperLimit" ColumnName="UpperLimit" />
                 <ScalarProperty Name="LowerLimit" ColumnName="LowerLimit" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />

@@ -8,7 +8,10 @@ namespace WeighRMonitoring.ViewModels
 {
     public class ReportsViewModel
     {
+        public int? ParentId { get; set; }
         public string ReportName { get; set; }
         public List<ReportCategory> ReportList { get; set; }
+
+        public ReportParameters reportParameters { get; set; }
     }
 }

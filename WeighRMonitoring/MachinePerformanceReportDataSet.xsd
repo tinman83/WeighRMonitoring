@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MachinePerformanceReportDataSet" targetNamespace="http://tempuri.org/MachinePerformanceReportDataSet.xsd" xmlns:mstns="http://tempuri.org/MachinePerformanceReportDataSet.xsd" xmlns="http://tempuri.org/MachinePerformanceReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DefaultConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DefaultConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DefaultConnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rptMachinePerformanceTableAdapter" GeneratorDataComponentClassName="rptMachinePerformanceTableAdapter" Name="rptMachinePerformance" UserDataComponentName="rptMachinePerformanceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="WeighR.dbo.rptMachinePerformance" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT MachineName, ProductCode, ProductName, UnitWeight, AvgFillTime, TotalUnits, TotalUnitsWithinRange, MachinePrecision FROM dbo.rptMachinePerformance</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MachineName" DataSetColumn="MachineName" />
+              <Mapping SourceColumn="ProductCode" DataSetColumn="ProductCode" />
+              <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
+              <Mapping SourceColumn="UnitWeight" DataSetColumn="UnitWeight" />
+              <Mapping SourceColumn="AvgFillTime" DataSetColumn="AvgFillTime" />
+              <Mapping SourceColumn="TotalUnits" DataSetColumn="TotalUnits" />
+              <Mapping SourceColumn="TotalUnitsWithinRange" DataSetColumn="TotalUnitsWithinRange" />
+              <Mapping SourceColumn="MachinePrecision" DataSetColumn="MachinePrecision" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MachinePerformanceReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="MachinePerformanceReportDataSet" msprop:Generator_UserDSName="MachinePerformanceReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rptMachinePerformance" msprop:Generator_TableClassName="rptMachinePerformanceDataTable" msprop:Generator_TableVarName="tablerptMachinePerformance" msprop:Generator_TablePropName="rptMachinePerformance" msprop:Generator_RowDeletingName="rptMachinePerformanceRowDeleting" msprop:Generator_RowChangingName="rptMachinePerformanceRowChanging" msprop:Generator_RowEvHandlerName="rptMachinePerformanceRowChangeEventHandler" msprop:Generator_RowDeletedName="rptMachinePerformanceRowDeleted" msprop:Generator_UserTableName="rptMachinePerformance" msprop:Generator_RowChangedName="rptMachinePerformanceRowChanged" msprop:Generator_RowEvArgName="rptMachinePerformanceRowChangeEvent" msprop:Generator_RowClassName="rptMachinePerformanceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MachineName" msprop:Generator_ColumnVarNameInTable="columnMachineName" msprop:Generator_ColumnPropNameInRow="MachineName" msprop:Generator_ColumnPropNameInTable="MachineNameColumn" msprop:Generator_UserColumnName="MachineName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnitWeight" msprop:Generator_ColumnVarNameInTable="columnUnitWeight" msprop:Generator_ColumnPropNameInRow="UnitWeight" msprop:Generator_ColumnPropNameInTable="UnitWeightColumn" msprop:Generator_UserColumnName="UnitWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AvgFillTime" msprop:Generator_ColumnVarNameInTable="columnAvgFillTime" msprop:Generator_ColumnPropNameInRow="AvgFillTime" msprop:Generator_ColumnPropNameInTable="AvgFillTimeColumn" msprop:Generator_UserColumnName="AvgFillTime" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalUnits" msprop:Generator_ColumnVarNameInTable="columnTotalUnits" msprop:Generator_ColumnPropNameInRow="TotalUnits" msprop:Generator_ColumnPropNameInTable="TotalUnitsColumn" msprop:Generator_UserColumnName="TotalUnits" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalUnitsWithinRange" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalUnitsWithinRange" msprop:Generator_ColumnPropNameInRow="TotalUnitsWithinRange" msprop:Generator_ColumnPropNameInTable="TotalUnitsWithinRangeColumn" msprop:Generator_UserColumnName="TotalUnitsWithinRange" type="xs:int" minOccurs="0" />
+              <xs:element name="MachinePrecision" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMachinePrecision" msprop:Generator_ColumnPropNameInRow="MachinePrecision" msprop:Generator_ColumnPropNameInTable="MachinePrecisionColumn" msprop:Generator_UserColumnName="MachinePrecision" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

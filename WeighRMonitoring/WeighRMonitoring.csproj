@@ -208,6 +208,7 @@
     <Compile Include="Api\MachineController.cs" />
     <Compile Include="Api\PlantController.cs" />
     <Compile Include="Api\ProductController.cs" />
+    <Compile Include="Api\ReportsController.cs" />
     <Compile Include="Api\TestController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -215,6 +216,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BatchesPerProductSummaryReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BatchesPerProductSummaryReportDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\jsTree3Controller.cs" />
@@ -225,6 +231,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DateHelper.cs" />
+    <Compile Include="MachinePerformanceReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MachinePerformanceReportDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MachinesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -239,6 +250,8 @@
     <Compile Include="Models\Components\ProductComponent.cs" />
     <Compile Include="Models\Components\DashboardData.cs" />
     <Compile Include="Models\Components\DashboardDataHelper.cs" />
+    <Compile Include="Models\Components\ReportData.cs" />
+    <Compile Include="Models\Components\ReportDataHelper.cs" />
     <Compile Include="Models\Components\ReportsComponent.cs" />
     <Compile Include="Models\Components\TransactionLogComponent.cs" />
     <Compile Include="Models\DashboardParameters.cs" />
@@ -269,6 +282,7 @@
     <Compile Include="Models\Entities\TransactionLog.cs">
       <DependentUpon>WeighRDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\WeighRDataContextConfiguration.cs" />
     <Compile Include="Models\Entities\WeighRDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -291,11 +305,32 @@
     <Compile Include="Models\ReportEntities\DashboardReport.cs" />
     <Compile Include="Models\ReportEntities\DensityTrend.cs" />
     <Compile Include="Models\ReportEntities\KPIReport.cs" />
+    <Compile Include="Models\ReportEntities\rptBatchesPerProductSummary.cs" />
+    <Compile Include="Models\ReportEntities\rptMachinePerformance.cs" />
+    <Compile Include="Models\ReportEntities\rptProductionRuntime.cs" />
+    <Compile Include="Models\ReportEntities\rptProductionSummary.cs" />
+    <Compile Include="Models\ReportEntities\rptProductPerMachineSummary.cs" />
+    <Compile Include="Models\ReportParameters.cs" />
     <Compile Include="Models\Tree.cs" />
     <Compile Include="PlantsListDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PlantsListDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionRunTimeReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionRunTimeReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionSummaryReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionSummaryReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductPerMachineSummaryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductPerMachineSummaryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ProductsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -314,6 +349,16 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TransactionLogDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionLogDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionLogsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionLogsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
   </ItemGroup>
@@ -329,6 +374,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\introjs.css" />
     <Content Include="Content\jplist-custom.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery.news-ticker.css" />
     <Content Include="Content\jsTree\docs.css" />
     <Content Include="Content\jsTree\themes\default-dark\32px.png" />
@@ -391,6 +437,28 @@
     <Content Include="MachinesDataSet.xsc">
       <DependentUpon>MachinesDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="MachinePerformanceReportDataSet.xsc">
+      <DependentUpon>MachinePerformanceReportDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="BatchesPerProductSummaryReportDataSet.xsc">
+      <DependentUpon>BatchesPerProductSummaryReportDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="BatchesPerProductSummaryReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BatchesPerProductSummaryReportDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="BatchesPerProductSummaryReportDataSet.xss">
+      <DependentUpon>BatchesPerProductSummaryReportDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="MachinePerformanceReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MachinePerformanceReportDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="MachinePerformanceReportDataSet.xss">
+      <DependentUpon>MachinePerformanceReportDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="MachinesDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>MachinesDataSet.Designer.cs</LastGenOutput>
@@ -407,6 +475,39 @@
     <Content Include="PlantsListDataSet.xss">
       <DependentUpon>PlantsListDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="ProductPerMachineSummaryDataSet.xsc">
+      <DependentUpon>ProductPerMachineSummaryDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="ProductionSummaryReportDataSet.xsc">
+      <DependentUpon>ProductionSummaryReportDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="ProductionRunTimeReportDataSet.xsc">
+      <DependentUpon>ProductionRunTimeReportDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProductionRunTimeReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductionRunTimeReportDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProductionRunTimeReportDataSet.xss">
+      <DependentUpon>ProductionRunTimeReportDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProductionSummaryReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductionSummaryReportDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProductionSummaryReportDataSet.xss">
+      <DependentUpon>ProductionSummaryReportDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProductPerMachineSummaryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductPerMachineSummaryDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProductPerMachineSummaryDataSet.xss">
+      <DependentUpon>ProductPerMachineSummaryDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="ProductsDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ProductsDataSet.Designer.cs</LastGenOutput>
@@ -415,12 +516,15 @@
     <Content Include="ProductsDataSet.xss">
       <DependentUpon>ProductsDataSet.xsd</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\DashboardTwo.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -428,6 +532,7 @@
     <Content Include="Scripts\jsTree3\jstree.js" />
     <Content Include="Scripts\jsTree3\jstree.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Reports.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\slpanels.js" />
@@ -476,6 +581,28 @@
     <Content Include="Views\jsTree3\Demo.cshtml" />
     <Content Include="Views\jsTree3\AJAXDemo.cshtml" />
     <Content Include="Views\Reports\_TreeView.cshtml" />
+    <Content Include="TransactionLogDataSet.xsc">
+      <DependentUpon>TransactionLogDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="TransactionLogDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TransactionLogDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="TransactionLogDataSet.xss">
+      <DependentUpon>TransactionLogDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="TransactionLogsDataSet.xsc">
+      <DependentUpon>TransactionLogsDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="TransactionLogsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TransactionLogsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="TransactionLogsDataSet.xss">
+      <DependentUpon>TransactionLogsDataSet.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -488,15 +615,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\Rdlc\BatchesPerProductSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\MachinePerformanceReport.rdlc" />
     <EmbeddedResource Include="Reports\Rdlc\MachinesList.rdlc" />
     <EmbeddedResource Include="Reports\Rdlc\PlantsList.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\ProductionDetailedReport.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\ProductionRunTimeReport.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\ProductionSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\ProductPerMachineSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\ProductPerMachineDetailedReport.rdlc" />
     <EmbeddedResource Include="Reports\Rdlc\ProductsList.rdlc" />
+    <EmbeddedResource Include="Reports\Rdlc\rep2.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,8 +12,8 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-            <LocalReport ReportPath="Reports\Products.rdlc">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="2000px" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+            <LocalReport ReportPath="Reports\Rdlc\ProductPerMachineSummaryReport.rdlc">
             </LocalReport>
         </rsweb:ReportViewer>
     </form>
